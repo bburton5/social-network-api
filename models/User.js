@@ -15,10 +15,12 @@ const userSchema = new Schema(
       // TODO: must match a valid email address
     },
     thoughts: {
-      // TODO: array of _id values referencing the Thought model
+      type: String,
+      ref: "Thought",
     },
     friends: {
-      // TODO: array of _id values referencingh the User model (self-reference)
+      type: String,
+      ref: "User",
     },
   },
   {
