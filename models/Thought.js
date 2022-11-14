@@ -1,4 +1,4 @@
-const { Schema } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 const thoughtSchema = new Schema(
   {
@@ -10,7 +10,7 @@ const thoughtSchema = new Schema(
     },
     createdAt: {
       type: Date,
-      default: Date.now,
+      default: Date.now(),
       // TODO: use a getter method to format the timestamp on query
     },
     username: {
@@ -35,4 +35,6 @@ thoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
 });
 
-module.exports = thoughtSchema;
+const Thought = model("thought", thoughtSchema);
+
+module.exports = Thought;
